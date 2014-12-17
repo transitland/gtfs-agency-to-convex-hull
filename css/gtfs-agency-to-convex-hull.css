@@ -1,0 +1,18 @@
+#parse-errors {
+  display: none;
+}
+
+#gtfs-stops-file {
+  width: 100%;
+}
+
+#convex-hull-geojson {
+  width: 100%;
+  height: 300px;
+  word-wrap: break-word;
+}
+
+#convex-hull-map {
+  width: 100%;
+  height: 400px;
+}
