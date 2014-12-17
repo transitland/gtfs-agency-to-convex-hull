@@ -7,4 +7,4 @@
 **How?** Go to http://transit-land.github.io/gtfs-agency-to-convex-hull/ and paste in the contents of a `stops.txt` file from a GTFS feed.
 
 **Enough questions. Show me an example, please.**
-![example screenshot](example-screenshot.png "Santa Clara Valley Transportation Agency (VTA)")
+[![example screenshot](example-screenshot.png "Santa Clara Valley Transportation Agency (VTA)")](http://transit-land.github.io/gtfs-agency-to-convex-hull/)
