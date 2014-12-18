@@ -1,3 +1,5 @@
+_.mixin(_.str.exports());
+
 var map,
     geojsonLayer;
 
@@ -66,7 +68,9 @@ $(document).ready(function() {
     var fileReader = new FileReader();
     fileReader.onload = function(fileLoadedEvent) {
       var zip = new JSZip(fileLoadedEvent.target.result);
-      var stopsTxt = zip.file("stops.txt").asText();
+      var fileNames = _.keys(zip.files);
+      var stopsTxtFullFileName = _.find(fileNames, function(fileName) { return _(fileName).endsWith("stops.txt") })
+      var stopsTxt = zip.file(stopsTxtFullFileName).asText();
       turnStopsTxtIntoGeoJson(stopsTxt);
     };
     fileReader.readAsArrayBuffer(gtfsFile);
