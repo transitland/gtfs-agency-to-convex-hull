@@ -10,7 +10,6 @@ turnStopsTxtIntoGeoJson = function(stopsTxt) {
       $('#parse-errors').append("<li>" + error.message + "</li>");
     });
     $('#parse-errors').show();
-    debugger
   } else {
     $('#parse-errors').hide();
     var convexHull = new ConvexHullGrahamScan();
