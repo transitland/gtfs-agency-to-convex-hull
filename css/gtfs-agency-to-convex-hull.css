@@ -1,3 +1,7 @@
+.container {
+  padding-top: 20px;
+}
+
 #parse-errors {
   display: none;
 }

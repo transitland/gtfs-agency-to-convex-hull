@@ -9,13 +9,25 @@
 <script src="js/graham_scan.js"></script>
 <script src="js/papaparse.js"></script>
 <script src="js/leaflet.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jszip.js"></script>
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <h1>GTFS stops.txt file</h1>
-      <ul id="parse-errors" class="alert alert-danger"></ul>
-      <textarea id="gtfs-stops-file" cols="80" rows="20" wrap="off"></textarea>
+    <div class="col-md-6" role="tabpanel">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#stops-txt" aria-controls="stops-txt" role="tab" data-toggle="tab">Paste in stops.txt</a></li>
+        <li role="presentation"><a href="#gtfs-upload" aria-controls="gtfs-upload" role="tab" data-toggle="tab">Upload a GTFS feed</a></li>
+      </ul>
+      <div class="tab-content">
+        <ul id="parse-errors" class="alert alert-danger"></ul>
+        <div role="tabpanel" class="tab-pane active" id="stops-txt">
+          <textarea id="gtfs-stops-file" rows="20" wrap="off"></textarea>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="gtfs-upload">
+          <input type="file" id="gtfs-file-upload" name="file" multiple=""/>
+        </div>
+      </div>
     </div>
     <div class="col-md-6">
       <h1>Convex Hull Points</h1>
