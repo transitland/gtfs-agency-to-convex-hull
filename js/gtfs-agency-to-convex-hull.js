@@ -18,9 +18,12 @@ turnStopsTxtIntoGeoJson = function(stopsTxt) {
     var stops = turf.featurecollection(_.map(parsedCsv.data, function(row) {
       return turf.point(row.stop_lon, row.stop_lat);
     }))
+
     var convexHull = turf.convex(stops);
+
     geojsonLayer.clearLayers();
     geojsonLayer.addData(convexHull);
+    geojsonLayer.addData(stops);
     map.fitBounds(geojsonLayer.getBounds());
     $('#convex-hull-geojson').html(JSON.stringify(convexHull));
   }
@@ -43,7 +46,18 @@ $(document).ready(function() {
   L.tileLayer('https://{s}.tiles.mapbox.com/v3/randyme.k5036ipp/{z}/{x}/{y}.png', {
     maxZoom: 18
   }).addTo(map);
-  geojsonLayer = L.geoJson().addTo(map);
+  geojsonLayer = L.geoJson(null, {
+    pointToLayer: function (feature, latlng) {
+      return L.circleMarker(latlng, {
+        radius: 2,
+        fillColor: "#ff7800",
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+      });
+    }
+  }).addTo(map);
 
   /* GTFS feed zip archive upload */
   $("#gtfs-file-upload").on("change", function(event) {
