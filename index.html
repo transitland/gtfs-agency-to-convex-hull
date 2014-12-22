@@ -8,6 +8,8 @@
 <script src="js/underscore.js"></script>
 <script src="js/underscore.string.js"></script>
 <script src="js/turf.js"></script>
+<script src="js/geojson-area.js"></script>
+<script src="js/latlon-geohash.js"></script>
 <script src="js/papaparse.js"></script>
 <script src="js/leaflet.js"></script>
 <script src="js/bootstrap.js"></script>
@@ -35,11 +37,20 @@
       <div id="convex-hull-map"></div>
       <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">GeoJSON</h3>
-          </div>
+          <h3 class="panel-title">GeoJSON</h3>
+        </div>
         <div class="panel-body">
           <code id="convex-hull-geojson"></code>
         </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Geohash</h3>
+        </div>
+        <div class="panel-body">
+          <code id="geohash"></code>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -26,7 +26,28 @@ turnStopsTxtIntoGeoJson = function(stopsTxt) {
     geojsonLayer.addData(stops);
     map.fitBounds(geojsonLayer.getBounds());
     $('#convex-hull-geojson').html(JSON.stringify(convexHull));
+
+    computeAndOutputGeohash(stops);
   }
+}
+
+computeAndOutputGeohash = function(stops) {
+  var centroid = turf.centroid(stops);
+  var geohash = Geohash.encode(centroid.geometry.coordinates[1], centroid.geometry.coordinates[0], 6)
+  var stops_bbox_area = polygonArea(turf.bboxPolygon(turf.extent(stops)).geometry.coordinates);
+  var geohash_bbox_area;
+  do {
+    geohash = geohash.substring(0, geohash.length - 1);
+    geohash_bbox = Geohash.bounds(geohash);
+    geohash_bbox_area = polygonArea([[
+      [geohash_bbox.sw.lon, geohash_bbox.sw.lat],
+      [geohash_bbox.sw.lon, geohash_bbox.ne.lat],
+      [geohash_bbox.ne.lon, geohash_bbox.ne.lat],
+      [geohash_bbox.ne.lon, geohash_bbox.sw.lat],
+      [geohash_bbox.sw.lon, geohash_bbox.sw.lat]
+    ]]);
+  } while (geohash_bbox_area <= stops_bbox_area)
+  $('#geohash').text(geohash);
 }
 
 $(document).ready(function() {
