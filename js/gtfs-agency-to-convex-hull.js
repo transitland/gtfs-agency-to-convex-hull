@@ -14,32 +14,15 @@ turnStopsTxtIntoGeoJson = function(stopsTxt) {
     $('#parse-errors').show();
   } else {
     $('#parse-errors').hide();
-    var convexHull = new ConvexHullGrahamScan();
-    _.each(parsedCsv.data, function(row) {
-      convexHull.addPoint(row.stop_lon, row.stop_lat); 
-    });
-    var hullPoints = convexHull.getHull();
-    var geojsonPolygonCoordinates = _.map(hullPoints, function(point) {
-      return [point.x, point.y];
-    });
-    geojsonPolygonCoordinates.push(_.first(geojsonPolygonCoordinates));
-    var geojson = {
-      "type": "FeatureCollection",
-      "features": [
-        {
-          "type": "Feature",
-          "properties": {},
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [geojsonPolygonCoordinates]
-          }
-        }
-      ]
-    };
+
+    var stops = turf.featurecollection(_.map(parsedCsv.data, function(row) {
+      return turf.point(row.stop_lon, row.stop_lat);
+    }))
+    var convexHull = turf.convex(stops);
     geojsonLayer.clearLayers();
-    geojsonLayer.addData(geojson);
+    geojsonLayer.addData(convexHull);
     map.fitBounds(geojsonLayer.getBounds());
-    $('#convex-hull-geojson').html(JSON.stringify(geojson));
+    $('#convex-hull-geojson').html(JSON.stringify(convexHull));
   }
 }
 
