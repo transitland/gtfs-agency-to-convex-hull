@@ -4,9 +4,9 @@
 
 **Why?**: If you don't have boundaries for a transit agencies service region, it's helpful to be able to easily approximate that based on where their stops are located.
 
-**How?** Go to http://transit-land.github.io/gtfs-agency-to-convex-hull/ and paste in the contents of a `stops.txt` file from a GTFS feed ***or*** upload a local copy of a GTFS feed zip archive.
+**How?** Go to http://transitland.github.io/gtfs-agency-to-convex-hull/ and paste in the contents of a `stops.txt` file from a GTFS feed ***or*** upload a local copy of a GTFS feed zip archive.
 
 **Enough questions. Show me examples, please.**
-[![example screenshot: paste in stops.txt](example-screenshot-paste-in-stops-txt.png "paste in stops.txt")](http://transit-land.github.io/gtfs-agency-to-convex-hull/)
+[![example screenshot: paste in stops.txt](example-screenshot-paste-in-stops-txt.png "paste in stops.txt")](http://transitland.github.io/gtfs-agency-to-convex-hull/)
 
-[![example screenshot: upload GTFS zip archive](example-screenshot-upload-gtfs-zip.png "upload GTFS zip archive")](http://transit-land.github.io/gtfs-agency-to-convex-hull/)
+[![example screenshot: upload GTFS zip archive](example-screenshot-upload-gtfs-zip.png "upload GTFS zip archive")](http://transitland.github.io/gtfs-agency-to-convex-hull/)
